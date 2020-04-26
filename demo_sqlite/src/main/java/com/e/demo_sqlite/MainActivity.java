@@ -18,9 +18,10 @@ import android.widget.RadioGroup;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
-public class MainActivity extends Activity {
+public class MainActivity extends AppCompatActivity {
 
     //读写权限
     private static String[] PERMISSIONS_STORAGE      = {
@@ -53,14 +54,15 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setTitle("Sqlite");
         verifyStoragePermissions(this);
-
-        Log.d("majin", " this" + this);
         //添加操作
         //数据库名称
         //如果只有一个数据库名称，那么这个数据库的位置会是在私有目录中
         //如果带SD卡路径，那么数据库位置则在指定的路径下
         String path = Environment.getExternalStorageDirectory().getAbsolutePath() + "/stu.db";
+        Log.d("majin", " path  " + path);
+
         SQLiteOpenHelper helper = new SQLiteOpenHelper(this, path, null, 1) {
             @Override
             public void onCreate(SQLiteDatabase sqLiteDatabase) {
