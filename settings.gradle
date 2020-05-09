@@ -1,5 +1,6 @@
 rootProject.name='StudyAndroid'
 include ':app'
+include ':demo_aidl'
 include ':demo_broadcastreceiver'
 include ':demo_butterknife'
 include ':demo_baidumap'

@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.demo_application">
+    package="com.demo_service.demo_application">
 
     <application
-        android:name=".MyApp"
+        android:name="com.com.e.demo_service.demo_application.MyApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TestOtto2Activity"></activity>
-        <activity android:name=".TestOtto1Activity" />
-        <activity android:name=".Main0Activity">
+        <activity android:name="com.com.e.demo_service.demo_application.TestOtto2Activity"></activity>
+        <activity android:name="com.com.e.demo_service.demo_application.TestOtto1Activity" />
+        <activity android:name="com.com.e.demo_service.demo_application.Main0Activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

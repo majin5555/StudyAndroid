@@ -32,7 +32,11 @@
         <service
             android:name=".MyService"
             android:enabled="true"
-            android:exported="true" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.e.demo_service.control_myservice" />
+            </intent-filter>
+        </service>
     </application>
 
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
