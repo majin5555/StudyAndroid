@@ -18,15 +18,19 @@ public class MyServiceConn implements ServiceConnection {
 
     @Override
     public void onServiceConnected(ComponentName name, IBinder service) {
-        Log.d("majin", "连接    " + name.toString());
-        iservice = (Iservice) service;
-        iservice.downLoad("1111");
+        Log.d("majin", "连接    name.toString()   ------" + name.toString() + "    service----" + service);
+
+        MyService.MyBinder myBinder = (MyService.MyBinder) service;
+        myBinder.downLoad("1111");
         try {
-            iservice.showProgress("com.e.demo_service 的传值");
+            myBinder.showProgress("内部传入的值======》1");
+            String s = myBinder.returnData();
+            Log.d("majin", "demo demo_service   " + s);
         } catch (RemoteException e) {
             e.printStackTrace();
         }
-        iservice.playMusic("");
+
+
     }
 
     @Override

@@ -7,7 +7,7 @@ package com.e.demo_service;
  * @desc: 自己的业务接口
  * 实现Aidl接口
  */
-public interface Iservice extends IMyAidlInterface {
+public interface Iservice extends IMyAidlInterface  {
     public void downLoad(String url);
 
     public void playMusic(String name);

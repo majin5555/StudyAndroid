@@ -8,32 +8,34 @@ import android.os.RemoteException;
 import android.util.Log;
 
 /**
- * 外部通过AIDl绑定服务，执行逻辑运算后，马上
+ * 外部通过AIDl绑定服务，执行逻辑运算后，
  */
 public class MyService extends Service {
-    private static int           INSIDE   = 0;//0内部连接
-    private static int           EXTERNAL = 1;//1外部Aidl连接
-    private        MyServiceConn mysc;
+    private static final String TAG = "majin";
+
+    private static int                   INSIDE   = 0;//0内部连接
+    private static int                   EXTERNAL = 1;//1外部Aidl连接
 
     public MyService() {
+
     }
 
     @Override
     public void onCreate() {
-        Log.d("majin", "正式创建 ");
+        Log.d(TAG, "正式创建 ");
         super.onCreate();
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        Log.d("majin", "onStartCommand ");
+        Log.d(TAG, "onStartCommand ");
 
         return super.onStartCommand(intent, flags, startId);
     }
 
     @Override
     public void onDestroy() {
-        Log.d("majin", "Service销毁 ");
+        Log.d(TAG, "Service销毁 ");
     }
 
     private Intent intent;
@@ -41,28 +43,46 @@ public class MyService extends Service {
     @Override
     public boolean onUnbind(Intent intent) {
         if (intent.getIntExtra("call", - 1) == INSIDE) {
-            Log.d("majin", "内部解绑服务");
+            Log.d(TAG, "内部解绑服务");
         } else if (intent.getIntExtra("call", - 1) == EXTERNAL) {
-            Log.d("majin", "外部通过AIDl解绑服务");
+            Log.d(TAG, "外部通过AIDl解绑服务");
         }
         return super.onUnbind(intent);
     }
 
+    String str1;//逻辑处理的结果
 
     @Override
     public IBinder onBind(Intent intent) {
         this.intent = intent;
-        Log.d("majin", "Service onBind");
-        MyBinder myBinder = new MyBinder();
-        IMyAidlInterface iMyAidlInterface = IMyAidlInterface.Stub.asInterface(myBinder);
+        Log.d(TAG, "Service onBind");
+
         if (intent.getIntExtra("call", - 1) == INSIDE) {
-            Log.d("majin", "内部绑定服务");
+            //TODO 内部代码良好 勿更改 做逻辑处理
+            //  Log.d(TAG, "内部绑定服务----做逻辑处理");
+            MyBinder myBinder = new MyBinder();
+            IMyAidlInterface iMyAidlInterface = IMyAidlInterface.Stub.asInterface(myBinder);
+            return iMyAidlInterface.asBinder();
+
         } else if (intent.getIntExtra("call", - 1) == EXTERNAL) {
-            Log.d("majin", "外部通过AIDL绑定服务----做逻辑处理");
+            //TODO 外部代码良好 勿更改
+            Log.d(TAG, "外部通过AIDL绑定服务----做逻辑处理");
+            IMyAidlInterface.Stub stub = new IMyAidlInterface.Stub() {
+                @Override
+                public void showProgress(String str) throws RemoteException {
+                    Log.d(TAG, "显示由外部传过来的值" + str);
+                    str1 = str;
+                }
 
+                @Override
+                public String returnData() throws RemoteException {
+                    return "AIDL返回---------------" + str1;
+                }
+            };
+
+            return stub;
         }
-        return iMyAidlInterface.asBinder();
-
+        return null;
 
     }
 
@@ -89,13 +109,19 @@ public class MyService extends Service {
 
         @Override
         public IBinder asBinder() {
-            Log.d("majin", "asBinder   ");
+            Log.d(TAG, "asBinder   ");
             return this;
         }
 
         @Override
         public void showProgress(String str) throws RemoteException {
-            Log.d("majin", str);
+            str1 = str;
+            Log.d(TAG, "显示由内部传过来的值  " + str1);
+        }
+
+        @Override
+        public String returnData() throws RemoteException {
+            return "内部返回--------------- " + str1;
         }
     }
 
@@ -109,7 +135,7 @@ public class MyService extends Service {
         //                            int i1 = 0;
         //                            for (int i = 0; i < 10; i++) {
         //                                i1 = i;
-        //                                Log.d("majin", "service 中开始下载" + i);
+        //                                Log.d(TAG, "service 中开始下载" + i);
         //                            }
         //                            if (i1 == 9) {
         //                                downLoad("111");
@@ -117,7 +143,7 @@ public class MyService extends Service {
         //                        }
         //                    }
         //                }).start();
-        Log.d("majin", "service 中开始下载");
+        Log.d(TAG, "service 中开始下载");
 
     }
 
@@ -126,6 +152,6 @@ public class MyService extends Service {
     }
 
     public void playMusic(String name) {
-        Log.d("majin", "service 中开始播放音乐");
+        Log.d(TAG, "service 中开始播放音乐");
     }
 }

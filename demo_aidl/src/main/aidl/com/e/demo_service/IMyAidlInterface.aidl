@@ -7,4 +7,6 @@ interface IMyAidlInterface {
 
     //定义显示函数  然后build项目
     void showProgress(String str);
+
+    String returnData();
 }
