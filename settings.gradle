@@ -18,4 +18,4 @@ include ':demo_recyclerview'
 include ':demo_glide'
 include ':demo_greendao'
 include ':demo_jpush'
-
+include ':demo_customview'
