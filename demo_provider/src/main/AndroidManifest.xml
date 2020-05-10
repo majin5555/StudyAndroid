@@ -17,6 +17,7 @@
             </intent-filter>
         </activity>
 
+        <!--内容提供者-->
         <provider
             android:name=".MyContentProvider"
             android:authorities="com.demo.provider"
