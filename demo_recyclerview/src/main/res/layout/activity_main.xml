@@ -9,35 +9,46 @@
     tools:context=".MainActivity">
 
     <Button
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="添加数据"
         android:onClick="onAddDataClick"/>
 
     <Button
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="切换布局"
         android:onClick="onChangeLayoutClick"/>
 
     <Button
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="插入一条数据"
         android:onClick="onInsertDataClick"/>
 
     <Button
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="删除一条数据"
         android:onClick="onRemoveDataClick"/>
 
 
-    <androidx.recyclerview.widget.RecyclerView
+    <com.e.demo_recyclerview.ChildPresenter
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
-    </androidx.recyclerview.widget.RecyclerView>
+    </com.e.demo_recyclerview.ChildPresenter>
+
+<!--    <com.e.demo_recyclerview.BaseDragZoomImageView-->
+<!--        android:id="@+id/iv"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:src="@mipmap/c"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_centerInParent="true" />-->
 
 </LinearLayout>

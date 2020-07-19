@@ -1,3 +1,5 @@
+include ':morelistview'
+include ':bottomeditext'
 rootProject.name='StudyAndroid'
 include ':app'
 include ':demo_customview'

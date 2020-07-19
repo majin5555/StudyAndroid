@@ -164,7 +164,6 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
             super(itemView);
 
             mIv = itemView.findViewById(R.id.iv);
-            mTv = itemView.findViewById(R.id.tv);
             mItemView = itemView;
         }
     }
