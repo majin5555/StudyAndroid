@@ -1,3 +1,4 @@
+include ':javatest'
 include ':morelistview'
 include ':bottomeditext'
 rootProject.name='StudyAndroid'

@@ -1,0 +1,23 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:ignore="MergeRootFrame">
+
+    <ListView android:id="@+id/code_list"
+        android:background="#ffffffff"
+        android:fadingEdgeLength="0.0sp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:drawSelectorOnTop="false"
+        android:cacheColorHint="#ffffffff"
+
+        android:dividerHeight="2.0dip"
+        android:layout_weight="0.0"
+        android:fastScrollEnabled="true"
+        android:scrollbars="none"
+        />
+
+</LinearLayout>
